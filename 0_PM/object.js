@@ -10,7 +10,23 @@ const assert = require('assert')
  */
 
 const hasFalsyValue = obj => {
-  return false;
+  let vals = Object.values(obj)
+  let truefalse = false;
+  vals.forEach(element => {
+    if (typeof(element) === "object") {
+      return hasFalsyValue(element);
+    }
+    else{
+      console.log(element);
+      console.log(!element);
+
+      if(!element){
+        truefalse = true;
+      }
+    }
+  })
+  return truefalse;
+
 };
 
 const falsyObj = {
@@ -33,6 +49,9 @@ const truthyObj = {
     anotherTruthy: ";)"
   }
 };
+
+// console.log(hasFalsyValue(falsyObj));
+// console.log(hasFalsyValue(truthyObj));
 
 assert(hasFalsyValue(falsyObj) === true);
 assert(hasFalsyValue(truthyObj) === false);

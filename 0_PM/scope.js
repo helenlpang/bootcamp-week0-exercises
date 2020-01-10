@@ -25,3 +25,39 @@ function y() {
 var a = 1;
 console.log(a);
 y();
+
+
+
+//Part 1:
+// 1
+// 2
+// null
+// If we delete line 15, it will print 1 2 1, because then it will use the a that is declared in the global scope.
+
+//Part 2:
+const x = () => {
+  let a;
+  console.log(a);  
+}
+const y = () => {
+  let a = 2;
+  console.log(a);
+  x(); 
+}
+let a = 1;
+console.log(a);
+y();
+
+//Part 3:
+const x = () => {
+  let a = 1;
+  console.log(a);  
+}
+const y = () => {
+  let a = 2;
+  console.log(a);
+  x(); 
+}
+let a = 1;
+console.log(a);
+y();
